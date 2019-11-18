@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 
-require('dotenv').config()
+require("dotenv").config();
 
 const server = express();
 
@@ -15,7 +15,7 @@ server.use(cors());
 server.use("/api", authRoutes);
 
 server.get("/", (req, res) => {
-    res.send("<h1>Hello, I am running. Are you running?</h1>")
-})
+  res.send("<h1>Hello, I am running. Are you running?</h1>");
+});
 
 module.exports = server;

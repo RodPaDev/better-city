@@ -42,8 +42,6 @@ function validateForm(req, res, next) {
   }
 }
 
-
-
 module.exports = {
   validateForm
 };
