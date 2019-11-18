@@ -11,7 +11,7 @@ server.use(helmet());
 server.use(cors());
 
 server.get("/", (req, res) => {
-    res.send("<h1>Hello, I am running. Are you running?")
+    res.send("<h1>Hello, I am running. Are you running?</h1>")
 })
 
 module.exports = server;
