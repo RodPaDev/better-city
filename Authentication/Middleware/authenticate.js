@@ -6,7 +6,7 @@ function authenticate(req, res, next) {
   const token = req.get("Authorization");
 
   if (token) {
-    jwt.verify(token, jwtKey, (err, decoded) => {
+    jwt.verify(token, jwtSecret, (err, decoded) => {
       if (err) {
         res.status(401).json(err);
       } else {
@@ -15,7 +15,7 @@ function authenticate(req, res, next) {
       }
     });
   } else {
-    return res.status(401).json("A balid Authentication Token is required.")
+    res.status(401).json("ACCESS DENIED: VALID TOKEN NOT PROVIDED")
   }
 }
 
