@@ -10,6 +10,13 @@ function insert(user) {
   return db("users")
     .insert(user)
     .returning("*")
+    .then(([user]) => {
+        delete user.password;
+        delete user.email;
+        delete user.phone;
+        const token = genToken(user)
+        return {...user, token};
+    })
 }
 
 function login(credentials) {
@@ -19,6 +26,8 @@ function login(credentials) {
     .then(user => {
       if (user && bcrypt.compareSync(credentials.password, user.password)) {
         delete user.password;
+        delete user.email;
+        delete user.phone;
         const token = genToken(user)
         return {...user, token};
       } else {
