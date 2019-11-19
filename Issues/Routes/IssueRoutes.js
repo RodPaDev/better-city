@@ -1,5 +1,9 @@
 const router = require("express").Router();
 
+// Middlewares
+const { authenticate } = require("../../Authentication/Middleware/authenticate");
+
+
 // Controllers
 const {
   getAllIssues,
@@ -11,11 +15,11 @@ const {
 
 // Issues Routes
 router.get("/issues", getAllIssues);
+router.get("/issues/:id", getIssueByID);
 
 // Routes below must provide Authentication Header with valid token
-router.get("/issues/:id", getIssueByID);
-router.post("/issues", postIssue);
-router.put("/issues/:id", editIssue);
-router.delete("/issues/:id", deleteIssue);
+router.post("/issues", authenticate, postIssue);
+router.put("/issues/:id", authenticate, editIssue);
+router.delete("/issues/:id", authenticate, deleteIssue);
 
 module.exports = router;
