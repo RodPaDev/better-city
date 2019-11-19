@@ -9,8 +9,7 @@ function get() {
 function insert(user) {
   return db("users")
     .insert(user)
-    .returning("id")
-    .then(([id]) => db("users").where({ id }));
+    .returning("*")
 }
 
 function login(credentials) {
