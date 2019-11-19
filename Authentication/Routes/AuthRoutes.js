@@ -1,7 +1,11 @@
 const router = require("express").Router();
 
 // Controllers
-const { getAllUsers, register, login } = require("../Controllers/AuthControllers");
+const {
+  getAllUsers,
+  register,
+  login
+} = require("../Controllers/AuthControllers");
 
 // Middlewares
 const { validateForm } = require("../Middleware/ValidateForm");

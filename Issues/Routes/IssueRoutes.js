@@ -9,11 +9,13 @@ const {
   deleteIssue
 } = require("../Controllers/IssueController");
 
-// Authentication Routes
+// Issues Routes
 router.get("/issues", getAllIssues);
-router.get("/issues/:id", getIssueByID)
-router.post("/issues", postIssue)
-router.put("/issues/:id", editIssue)
-router.delete("/issues/:id", deleteIssue)
+
+// Routes below must provide Authentication Header with valid token
+router.get("/issues/:id", getIssueByID);
+router.post("/issues", postIssue);
+router.put("/issues/:id", editIssue);
+router.delete("/issues/:id", deleteIssue);
 
 module.exports = router;
