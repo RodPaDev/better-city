@@ -40,8 +40,23 @@ function getByID(id) {
 function insertIssue(issue){
     return db("issues")
         .insert(issue)
+        .returning("*")
+}
+
+function deleteIssue(id){
+    return db("issues")
+    .where({id})
+    .del()
+    .then(bool => bool ? "SUCCESS: Issue Deleted" : "ERROR: Issue not deleted")
+}
+
+function updateIssue(id, issue){
+  return db("issues")
+    .where({id})
+    .update(issue)
+    .returning("*")
 }
 
 module.exports = {
-  get, getByID, insertIssue
+  get, getByID, insertIssue, deleteIssue, updateIssue
 };
