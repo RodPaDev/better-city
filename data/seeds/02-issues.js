@@ -10,6 +10,22 @@ exports.seed = function(knex) {
           longitude: -2.587125,
           imgURL: "https://i.imgur.com/jqXBn1J.png",
           user_id: 1
+        },
+        {
+          id: 2,
+          description: "This pothole has not been fifxed!",
+          latitude: 51.432545,
+          longitude: -2.551225,
+          imgURL: "https://i.imgur.com/jqXBn1J.png",
+          user_id: 1
+        },
+        {
+          id: 3,
+          description: "This hole is big and has not been fifxed!",
+          latitude: 51.472545,
+          longitude: -4.551225,
+          imgURL: "https://i.imgur.com/jqXBn1J.png",
+          user_id: 1
         }
       ]);
     });
