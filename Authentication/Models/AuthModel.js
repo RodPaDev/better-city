@@ -1,5 +1,6 @@
 const db = require("../../data/dbConfig");
 const bcrypt = require("bcryptjs");
+const genToken = require("../Middleware/tokenGenerator");
 
 function get() {
   return db("users");
@@ -19,7 +20,8 @@ function login(credentials) {
     .then(user => {
       if (user && bcrypt.compareSync(credentials.password, user.password)) {
         delete user.password;
-        return user;
+        const token = genToken(user)
+        return {...user, token};
       } else {
         return "Your email or your password is incorrect.";
       }
