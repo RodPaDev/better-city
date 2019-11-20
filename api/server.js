@@ -25,7 +25,7 @@ server.get("/api/docs", (req, res) => {
 });
 
 server.get("/", (req, res) => {
-  res.redirect("https://github.com/rodpa715/BetterCity")
+  res.redirect("https://github.com/rodpa715/better-city")
 })
 
 module.exports = server;
