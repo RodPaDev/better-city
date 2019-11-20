@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rodpa715/LetzDiff.git"
+    "url": "git+https://github.com/rodpa715/bettercity.git"
   },
   "author": "Patrick Rodrigues",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rodpa715/LetzDiff/issues"
+    "url": "https://github.com/rodpa715/bettercity/issues"
   },
-  "homepage": "https://github.com/rodpa715/LetzDiff#readme",
+  "homepage": "https://github.com/rodpa715/bettercity#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
