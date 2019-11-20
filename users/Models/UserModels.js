@@ -1,23 +1,13 @@
 const db = require("../../data/dbConfig");
 
-function getById(id) {
-  return db("users")
-    .select("first_name", "last_name", "phone", "email")
-    .where({ id })
-    .first();
-}
-
-function deleteUser(id) {
-    return db("users")
-        .where({ id })
-        .del()
-}
-
-function updateUserInfo(id, info){
+function getById(id){
     return db("users")
         .where({id})
-        .update(info)
         .returning("*")
+        .then(([user]) => {
+            delete user.password
+            return user
+        })
 }
 
-module.exports = { getById, deleteUser, updateUserInfo }
+module.exports = { getById }
