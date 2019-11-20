@@ -1,4 +1,4 @@
-const issues = require("../Models/issuesModels");
+const issues = require("./../Models/issuesModels");
 
 async function getAllIssues(req, res) {
   try {

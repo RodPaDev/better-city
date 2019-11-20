@@ -1,10 +1,10 @@
 const router = require("express").Router();
 
 // Middlewares
-const { authenticate } = require("../../Authentication/Middleware/authenticate");
-const { validateID } = require("../Middlewares/validateID");
-// const { validateUserID } = require("../../users/middlewares/validateUserID");
-const { validateForm } = require("../Middlewares/validateForm");
+const { authenticate } = require("./../../Authentication/Middleware/authenticate");
+const { validateID } = require("./../Middlewares/validateID");
+// const { validateUserID } = require("./../../users/middlewares/validateUserID");
+const { validateForm } = require("./../Middlewares/validateForm");
 
 
 // Controllers
@@ -14,7 +14,7 @@ const {
   postIssue,
   editIssue,
   deleteIssue
-} = require("../Controllers/IssueController");
+} = require("./../Controllers/IssueController");
 
 // Issues Routes
 router.get("/issues", getAllIssues);

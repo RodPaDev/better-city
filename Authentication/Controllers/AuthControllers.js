@@ -1,4 +1,4 @@
-const users = require("../Models/AuthModel");
+const users = require("./../Models/AuthModel");
 
 async function register(req, res) {
   try {
