@@ -58,7 +58,9 @@ function deleteIssue(id) {
     .where({ id })
     .del()
     .then(bool =>
-      bool ? "SUCCESS: Issue Deleted" : "ERROR: Issue not deleted"
+      bool
+        ? { isDeleted: true, msg: "SUCCESS: Issue Deleted" }
+        : { isDeleted: false, msg: "Error: Issue not Deleted" }
     );
 }
 

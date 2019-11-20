@@ -11,7 +11,12 @@ function insertVote(vote) {
 function removeVote(vote) {
   return db("votes")
     .where(vote)
-    .del();
+    .del()
+    .then(bool =>
+      bool
+        ? { isDeleted: true, msg: "SUCCESS: Issue Deleted" }
+        : { isDeleted: false, msg: "Error: Issue not Deleted" }
+    );
 }
 
 module.exports = { insertVote, removeVote };
