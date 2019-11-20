@@ -10,7 +10,10 @@ async function validateID(req, res, next) {
       res.status(404).json("Vote not found")
     }
   } catch (error) {
-    res.status(500).json({ error });
+    res.status(500).json({
+      message: "Something went wrong, try again in a few minutes",
+      error
+    });
   }
 }
 

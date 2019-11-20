@@ -5,7 +5,10 @@ async function getUserByID(req, res) {
     const result = await users.getById(req.params.id);
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({ error });
+    res.status(500).json({
+      message: "Something went wrong, try again in a few minutes",
+      error
+    });
   }
 }
 
