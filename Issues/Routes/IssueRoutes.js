@@ -3,7 +3,7 @@ const router = require("express").Router();
 // Middlewares
 const { authenticate } = require("../../Authentication/Middleware/authenticate");
 const { validateID } = require("../Middlewares/validateID");
-const { validateUserID } = require("../../Users/Middlewares/validateUserID")
+const { validateUserID } = require("../../Users/Middlewares/validateUserID");
 const { validateForm } = require("../Middlewares/validateForm");
 
 
