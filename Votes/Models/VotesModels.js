@@ -1,11 +1,15 @@
 const db = require("../../data/dbConfig");
+const issues = require("../../Issues/Models/IssuesModels")
 
 function getVote(vote) {
   return db("votes").where(vote);
 }
 
 function insertVote(vote) {
-  return db("votes").insert(vote);
+  return db("votes")
+    .insert(vote)
+    .returning("issue_id")
+    .then(([id]) => issues.getByID(id))
 }
 
 function removeVote(vote) {
@@ -19,4 +23,4 @@ function removeVote(vote) {
     );
 }
 
-module.exports = { insertVote, removeVote };
+module.exports = { insertVote, removeVote, getVote };
