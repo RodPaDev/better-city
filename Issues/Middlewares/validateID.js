@@ -4,7 +4,6 @@ async function validateID(req, res, next) {
   try {
     const issues = await db("issues").select("issues.id");
     const isID = issues.filter(issue => issue.id === Number(req.params.id));
-    console.log(isID)
     if (isID.length) {
       next();
     } else {
