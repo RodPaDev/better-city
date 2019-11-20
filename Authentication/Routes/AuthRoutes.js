@@ -13,7 +13,6 @@ const { uniqueContactInfo } = require("../Middleware/UniqueEmail");
 const { hashPassword } = require("../Middleware/hashPassword");
 
 // Authentication Routes
-router.get("/users", getAllUsers);
 router.post("/register", validateForm, uniqueContactInfo, hashPassword, register);
 router.post("/login", login);
 
