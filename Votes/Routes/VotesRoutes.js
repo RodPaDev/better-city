@@ -1,12 +1,14 @@
 const router = require("express").Router();
 
 // Middlewares
+const { authenticate } = require("../../Authentication/Middleware/authenticate");
+const { validateID } = require("../Middlewares/validateID");
 
 // Controllers
-const { addVote, deleteVote } = require("../Controllers/VotesControllers");
+const { addVote, deleteVote} = require("../Controllers/VotesControllers");
 
 // Routes
-router.post("/votes", addVote);
-router.delete("/votes", deleteVote);
+router.post("/votes", authenticate, addVote);
+router.delete("/votes", authenticate, validateID, deleteVote);
 
 module.exports = router;
