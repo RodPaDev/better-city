@@ -20,8 +20,8 @@ server.use("/api/", issueRoutes);
 server.use("/api/", userRoutes);
 server.use("/api/", votesRoutes);
 
-server.get("/", (req, res) => {
-  res.send("<h1>Hello, I am running. Are you running?</h1>");
+server.get("/api/docs", (req, res) => {
+  res.redirect("https://documenter.getpostman.com/view/8105818/SW7Z4U2y?version=latest");
 });
 
 module.exports = server;
