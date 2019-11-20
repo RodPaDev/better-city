@@ -1,5 +1,5 @@
-const db = require("./../../data/dbConfig");
-const issues = require("./../../issues/models/issuesModels")
+const db = require("../../data/dbConfig");
+const issues = require("../../issues/models/issuesModels")
 
 function getVote(vote) {
   return db("votes").where(vote);

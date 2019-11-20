@@ -1,4 +1,4 @@
-const votes = require("./../models/votesModels");
+const votes = require("../models/votesModels");
 
 async function validateID(req, res, next) {
   try {

@@ -1,4 +1,4 @@
-const db = require("./../../data/dbConfig");
+const db = require("../../data/dbConfig");
 
 async function uniqueContactInfo(req, res, next) {
   try {
