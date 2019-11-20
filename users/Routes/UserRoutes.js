@@ -1,11 +1,13 @@
 const router = require("express").Router();
 
 // Middlewares
-const { validateUserId } = require("../Middlewares/validateUserID");
+const { validateUserIDParams } = require("../Middlewares/validateUserID");
 
 // Controllers
 const { getUserByID } = require("../Controllers/UserControllers");
 
-router.get("/user/:id", validateUserId, getUserByID);
+// Routes
+router.get("/user/:id", validateUserIDParams, getUserByID);
 
 module.exports = router;
+
