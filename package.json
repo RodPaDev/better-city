@@ -1,5 +1,5 @@
 {
-  "name": "bettercity",
+  "name": "better-city",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rodpa715/bettercity.git"
+    "url": "git+https://github.com/rodpa715/better-city.git"
   },
   "author": "Patrick Rodrigues",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rodpa715/bettercity/issues"
+    "url": "https://github.com/rodpa715/better-city/issues"
   },
-  "homepage": "https://github.com/rodpa715/bettercity#readme",
+  "homepage": "https://github.com/rodpa715/better-city#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
