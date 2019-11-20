@@ -14,7 +14,7 @@ const {
   postIssue,
   editIssue,
   deleteIssue
-} = require("../controllers/issueController");
+} = require("./../controllers/issueController");
 
 // Issues Routes
 router.get("/issues", getAllIssues);

@@ -5,12 +5,12 @@ const {
   getAllUsers,
   register,
   login
-} = require("../controllers/authControllers");
+} = require("./../controllers/authControllers");
 
 // Middlewares
-const { validateForm } = require("../middleware/validateForm");
-const { uniqueContactInfo } = require("../middleware/uniqueEmail");
-const { hashPassword } = require("../middleware/hashPassword");
+const { validateForm } = require("./../middleware/validateForm");
+const { uniqueContactInfo } = require("./../middleware/uniqueEmail");
+const { hashPassword } = require("./../middleware/hashPassword");
 
 // Authentication Routes
 router.post("/register", validateForm, uniqueContactInfo, hashPassword, register);
