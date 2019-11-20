@@ -6,10 +6,10 @@ require("dotenv").config();
 
 const server = express();
 
-const authRoutes = require("./../Authentication/Routes/AuthRoutes");
-const issueRoutes = require("./../Issues/Routes/IssueRoutes");
-const userRoutes = require("./../Users/Routes/UserRoutes");
-const votesRoutes = require("./../Votes/Routes/VotesRoutes");
+const authRoutes = require("./../authentication/routes/authRoutes");
+const issueRoutes = require("./../issues/routes/issueRoutes");
+const userRoutes = require("./../users/routes/userRoutes");
+const votesRoutes = require("./../votes/routes/votesRoutes");
 
 server.use(express.json());
 server.use(helmet());

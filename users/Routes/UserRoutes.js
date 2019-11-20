@@ -1,10 +1,10 @@
 const router = require("express").Router();
 
 // Middlewares
-const { validateUserIDParams } = require("./../Middlewares/validateUserID");
+const { validateUserIDParams } = require("./../middlewares/validateUserID");
 
 // Controllers
-const { getUserByID } = require("./../Controllers/UserControllers");
+const { getUserByID } = require("./../controllers/userControllers");
 
 // Routes
 router.get("/user/:id", validateUserIDParams, getUserByID);

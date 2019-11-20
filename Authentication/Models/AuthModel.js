@@ -1,6 +1,6 @@
 const db = require("./../../data/dbConfig");
 const bcrypt = require("bcryptjs");
-const genToken = require("./../Middleware/tokenGenerator");
+const genToken = require("./../middleware/tokenGenerator");
 
 function get() {
   return db("users");
