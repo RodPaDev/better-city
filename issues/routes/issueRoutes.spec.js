@@ -69,3 +69,32 @@ describe("GET All issues", () => {
         });
     })
 })
+
+describe("GET issue by id", () => {
+  it("Get an array back", () => {
+      return request(server)
+      .get("/api/issues/1")
+      .expect(200)
+      .expect("Content-Type", /json/)
+      .then(res => {
+          expect(typeof res.body).toBe("object")
+      })
+  })
+
+  it("Check object data type integrity", () => {
+      return request(server)
+      .get("/api/issues/1")
+      .expect(200)
+      .expect("Content-Type", /json/)
+      .then(res => {
+        expect(typeof res.body.id).toBe("number")
+        expect(typeof res.body.description).toBe("string")
+        expect(typeof res.body.latitude).toBe("number")
+        expect(typeof res.body.longitude).toBe("number")
+        expect(typeof res.body.first_name).toBe("string")
+        expect(typeof res.body.last_name).toBe("string")
+        expect(typeof res.body.imgURL).toBe("string")
+        expect(typeof res.body.votes).toBe("string")
+      });
+  })
+})
