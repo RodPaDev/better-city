@@ -20,6 +20,23 @@ describe("POST New Issue", () => {
             .expect(201)
             .expect("Content-Type", /json/)
     });
+
+    it("Check object data type integrity", () =>{
+      return request(server)
+          .post("/api/issues")
+          .set("Authorization", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTU3NDE4NzI5NiwiZXhwIjoxNTc5MzcxMjk2fQ.q6xuzkdeyuYLH40OSFgjbWBoJYD1bxGYRrVFH3MiunU")
+          .send(issue)
+          .expect(201)
+          .expect("Content-Type", /json/)
+          .then(res => {
+            expect(typeof res.body.id).toBe("number")
+            expect(typeof res.body.description).toBe("string")
+            expect(typeof res.body.latitude).toBe("number")
+            expect(typeof res.body.longitude).toBe("number")
+            expect(typeof res.body.imgURL).toBe("string")
+            expect(typeof res.body.user_id).toBe("number")
+        });
+  });
 })
 
 describe("GET All issues", () => {
@@ -49,7 +66,6 @@ describe("GET All issues", () => {
             expect(typeof res.body[0]["first_name"]).toBe("string")
             expect(typeof res.body[0]["last_name"]).toBe("string")
             expect(typeof res.body[0]["votes"]).toBe("string")
-
         });
     })
 })
