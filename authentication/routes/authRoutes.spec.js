@@ -28,6 +28,14 @@ const register = {
     phone: random()
 }
 
+const registerExisting = {
+    email: process.env.TEST_EMAIL,
+    password: process.env.TEST_PW,
+    phone: 31415926,
+    first_name: "Test",
+    last_name: "Testing"
+}
+
 
 describe("POST /api/auth/register", () => {
     it("Create a new User and return ", () =>{
@@ -43,6 +51,34 @@ describe("POST /api/auth/register", () => {
                 expect(typeof res.body.token).toBe("string")
                 expect(typeof res.body.id).toBe("number")
             })
+    })
+
+    it("Create a new user with existing email", () => {
+        return request(server)
+        .post("/api/auth/register")
+        .send(registerExisting)
+        .expect(500)
+        .expect("Content-Type", /json/)
+            .then(res => {
+                expect(res.body).toBe(`${registerExisting.email} is already in use`)
+            })
+    })
+    it("Create a new user with existing phone", () => {
+        return request(server)
+        .post("/api/auth/register")
+        .send({...registerExisting, email: random("email")})
+        .expect(500)
+        .expect("Content-Type", /json/)
+            .then(res => {
+                expect(res.body).toBe(`${registerExisting.phone} is already in use`)
+            })
+    })
+
+    it("Create a new user with existing phone", () => {
+        return request(server)
+        .post("/api/auth/register")
+        .send("t")
+        .expect(400)
     })
 })
 
