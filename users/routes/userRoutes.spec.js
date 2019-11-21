@@ -2,8 +2,8 @@ const request = require("supertest");
 
 const server = require("../../api/server");
 
-describe("GET All issues", () => {
-    it("Get user info", () => {
+describe("GET users", () => {
+    it("Get user info by id", () => {
       return request(server)
         .get("/api/user/1")
         .expect(200)

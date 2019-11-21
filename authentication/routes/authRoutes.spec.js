@@ -74,7 +74,7 @@ describe("POST /api/auth/register", () => {
             })
     })
 
-    it("Create a new user with existing phone", () => {
+    it("Test wrong entry", () => {
         return request(server)
         .post("/api/auth/register")
         .send("t")
