@@ -107,7 +107,7 @@ describe("GET issue by id", () => {
   })
 })
 
-describe("Update issue by id", () => {
+describe("PUT issue by id", () => {
 
   let issueId = 0;
 
@@ -134,11 +134,11 @@ describe("Update issue by id", () => {
       .then(res => {
         expect(typeof res.body).toBe("object")
         expect(res.body).toMatchObject({
-          ...updatedIssue, 
-          id: issueId, 
+          ...updatedIssue,
+          id: issueId,
           latitude: `${updatedIssue.latitude}`,
           longitude: `${updatedIssue.longitude}`
-        
+
         })
       })
   })
@@ -159,4 +159,49 @@ describe("Update issue by id", () => {
         expect(typeof res.body.user_id).toBe("number")
       });
   })
+})
+
+
+describe("Delete issue by id", () => {
+
+  let issueId = 0;
+
+  it("Create a new Issue to delete", () => {
+    return request(server)
+      .post("/api/issues")
+      .set("Authorization", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTU3NDE4NzI5NiwiZXhwIjoxNTc5MzcxMjk2fQ.q6xuzkdeyuYLH40OSFgjbWBoJYD1bxGYRrVFH3MiunU")
+      .send(issue)
+      .expect(201)
+      .expect("Content-Type", /json/)
+      .then(res => {
+        issueId = res.body.id;
+        expect(typeof res.body).toBe("object")
+      })
+  });
+
+  it("Delete the newly created issue", () => {
+    return request(server)
+      .del(`/api/issues/${issueId}`)
+      .set("Authorization", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTU3NDE4NzI5NiwiZXhwIjoxNTc5MzcxMjk2fQ.q6xuzkdeyuYLH40OSFgjbWBoJYD1bxGYRrVFH3MiunU")
+      .expect(200)
+      .expect("Content-Type", /json/)
+      .then(res => {
+        expect(res.body)
+          .toMatchObject({
+            isDeleted: true, msg: "SUCCESS: Issue Deleted"
+          })
+      })
+  })
+
+  it("Delete an unexisting id", () => {
+    return request(server)
+      .del(`/api/issues/${issueId}`)
+      .set("Authorization", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTU3NDE4NzI5NiwiZXhwIjoxNTc5MzcxMjk2fQ.q6xuzkdeyuYLH40OSFgjbWBoJYD1bxGYRrVFH3MiunU")
+      .expect(500)
+      .expect("Content-Type", /json/)
+      .then(res => {
+        expect(res.body).toBe(`Issue ${issueId} does not exist in our database`)
+      })
+  })
+
 })
