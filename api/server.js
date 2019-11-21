@@ -21,11 +21,11 @@ server.use("/api/", userRoutes);
 server.use("/api/", votesRoutes);
 
 server.get("/api/docs", (req, res) => {
-  res.redirect("https://documenter.getpostman.com/view/8105818/SW7Z4U2y?version=latest");
+  res.status(302).redirect("https://documenter.getpostman.com/view/8105818/SW7Z4U2y?version=latest");
 });
 
 server.get("/", (req, res) => {
-  res.redirect("https://github.com/rodpa715/better-city")
+  res.status(302).redirect("https://github.com/rodpa715/better-city")
 })
 
 module.exports = server;

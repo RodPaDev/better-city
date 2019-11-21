@@ -2,8 +2,8 @@ exports.up = async function(knex, Promise) {
   await knex.schema.createTable("issues", tbl => {
     tbl.increments();
     tbl.text("description").notNullable();
-    tbl.float("latitude").notNullable();
-    tbl.float("longitude").notNullable();
+    tbl.decimal("latitude", 9, 6).notNullable();
+    tbl.decimal("longitude", 9, 6).notNullable();
     tbl.text("imgURL").notNullable();
     tbl
       .integer("user_id")

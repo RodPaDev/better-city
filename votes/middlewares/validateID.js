@@ -3,7 +3,6 @@ const votes = require("./../models/votesModels");
 async function validateID(req, res, next) {
   try {
     const vote = await votes.getVote(req.body);
-    console.log(vote);
     if (vote.length) {
       next();
     } else {

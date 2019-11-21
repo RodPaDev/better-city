@@ -31,3 +31,9 @@ Other Technologies that were used:
 - [pgAdmin](https://www.pgadmin.org/)
 - Lots of Pizza 🍕
 - Lots of Tea 🍵
+
+This project has a coverage of:
+- Statements: 87%
+- Branch: 70%
+- Functions: 93%
+- Lines: 87%
