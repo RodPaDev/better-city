@@ -24,9 +24,13 @@ describe("POST /api/auth/register", () => {
             .send(register)
             .expect(201)
             .expect("Content-Type", /json/)
-            .then(res => 
+            .then(res => {
                 expect(typeof res.body === "object").toBe(true)
-            )
+                expect(typeof res.body.first_name).toBe("string")
+                expect(typeof res.body.last_name).toBe("string")
+                expect(typeof res.body.token).toBe("string")
+                expect(typeof res.body.id).toBe("number")
+            })
     })
 })
 
@@ -42,6 +46,7 @@ describe("POST /api/auth/login", () => {
             .expect(200)
             .expect("Content-Type", /json/)
             .then(res => {
+                expect(typeof res.body === "object").toBe(true)
                 expect(typeof res.body.first_name).toBe("string")
                 expect(typeof res.body.last_name).toBe("string")
                 expect(typeof res.body.token).toBe("string")
