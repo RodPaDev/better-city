@@ -3,21 +3,33 @@ const request = require("supertest");
 const db = require("../../data/dbConfig");
 const server = require("../../api/server");
 
+function random(option = "number"){
+    const chars = 'abcdefghijklmnopqrstuvwxyz1234567890';
+    let number = ""
+    let string = '';
+    if(option === "email"){
+        for(var i = 0; i < 15; i++){
+            string += chars[Math.floor(Math.random() * chars.length)];
+        }
+        return string + "@email.com"
+    }else{
+        for(var i = 0; i < 9; i++){
+            number += Math.floor(Math.random() * 9);
+        }
+        return Number(number)
+    }
+}
+
 const register = {
-    email: "somedude@someemail.tld",
+    email: random("email"),
     password: "password",
     first_name: "Somedude",
     last_name: "testing",
-    phone: 625443
+    phone: random()
 }
 
 
-
 describe("POST /api/auth/register", () => {
-    beforeEach(async () => {
-        await db.raw('TRUNCATE TABLE users, users CASCADE')
-    })
-
     it("Create a new User and return ", () =>{
         return request(server)
             .post("/api/auth/register")
@@ -36,12 +48,12 @@ describe("POST /api/auth/register", () => {
 
 describe("POST /api/auth/login", () => {
 
-    it("Create a new User and return ", () =>{
+    it("Login Test user", () =>{
         return request(server)
             .post("/api/auth/login")
             .send({
-                email: register.email,
-                password: register.password
+                email: process.env.TEST_EMAIL,
+                password: process.env.TEST_PW
             })
             .expect(200)
             .expect("Content-Type", /json/)
