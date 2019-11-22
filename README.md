@@ -1,6 +1,8 @@
 # BetterCity
 ## Fix the pothole already
 
+![vulnerabilities](https://snyk.io/test/github/rodpa715/better-city/badge.svg)
+
 BetterCity bridges the gap between your local government and citizens.
 People can post and upvote issues, so that their local government can see what is prioritary and urgent.
 
