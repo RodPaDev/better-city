@@ -13,7 +13,7 @@ The technologies used for this project were:
 - Node
 - Express
 - Knex
-- Postgres (pg)
+- Pg (postgresql)
 - Helmet
 - Cors
 - DotEnv
